@@ -24,7 +24,7 @@ class LogIn extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.navy_,
-      appBar: const AppBarC(),
+      appBar:  AppBarC(),
       body: SafeArea(
         child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),

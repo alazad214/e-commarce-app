@@ -3,6 +3,7 @@ import 'package:ecommece2/pages/welcome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 import '../const/appcolors.dart';
 import '../const/appstrings.dart';
@@ -30,15 +31,13 @@ class _SplashState extends State<Splash> {
 
   @override
   Widget build(BuildContext context) {
+    final Height = MediaQuery.of(context).size.height;
     return Scaffold(
+
       body: Container(
         color: AppColors.navy_,
-        child: const Center(
-          child: Text(
-            AppStrings.appname,
-            style: TextStyle(
-                fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
-          ),
+        child:  Center(
+          child: Lottie.asset("assets/animation/anim.json",height: Height / 8 )
         ),
       ),
     );
