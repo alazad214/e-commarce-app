@@ -62,28 +62,32 @@ class Product_Grid extends StatelessWidget {
                         ),
                         Text(
                           product[index]["name"],
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
                               color: Colors.indigo,
                               fontWeight: FontWeight.w600,
-                              fontSize: 18),
+                              fontSize: 16),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              product[index]["discount_price"],
+                              product[index]["d_price"],
+                              overflow: TextOverflow.ellipsis,
                               style: const TextStyle(
                                   color: Colors.black54,
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 16),
+                                  fontSize: 12),
                             ),
                             Text(
-                              product[index]["original_price"],
+                              product[index]["o_price"],
+                              overflow: TextOverflow.ellipsis,
                               style: const TextStyle(
                                   color: Colors.red,
                                   fontWeight: FontWeight.w600,
                                   decoration: TextDecoration.lineThrough,
-                                  fontSize: 16),
+                                  fontSize: 12),
                             )
                           ],
                         )

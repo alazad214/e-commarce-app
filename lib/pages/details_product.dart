@@ -36,12 +36,16 @@ class Details_Product extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  product?["name"],
-                  style: const TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 22),
+                Expanded(
+                  child: Text(
+                    product?["name"],
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 20),
+                  ),
                 ),
                 IconButton(
                     onPressed: () {},
@@ -54,19 +58,23 @@ class Details_Product extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  product?["discount_price"],
-                  style: const TextStyle(
-                      color: Colors.black54,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 25),
+                Expanded(
+                  child: Text(
+                    product?["d_price"],
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                        color: Colors.black54,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 25),
+                  ),
                 ),
                 Text(
-                  product?["original_price"],
+                  product?["o_price"],
+                  overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
                       color: Colors.red,
                       fontWeight: FontWeight.w600,
