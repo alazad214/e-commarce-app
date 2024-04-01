@@ -1,6 +1,6 @@
 import 'package:ecommece2/widgets/appbarC.dart';
 import 'package:ecommece2/widgets/categoryC.dart';
-import 'package:ecommece2/widgets/grid_itemC.dart';
+import 'package:ecommece2/widgets/Cus_single_product.dart';
 import 'package:ecommece2/widgets/title_subtitleC.dart';
 import 'package:flutter/material.dart';
 
@@ -13,10 +13,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBarC(
-          backgroundcolor: Colors.blueGrey,
+          backgroundcolor: Colors.white,
           leading: IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
           action: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.search))
+            IconButton(onPressed: () {}, icon: const Icon(Icons.shopping_cart,color: Colors.green,)),
+            IconButton(onPressed: () {}, icon: const Icon(Icons.favorite_border_outlined)),
           ],
         ),
         body: const Padding(
@@ -52,7 +53,7 @@ class HomePage extends StatelessWidget {
                 ),
                 CategoryC(),
                 SizedBox(height: 20),
-                Product_Grid()
+                Cus_Single_Product()
               ],
             ),
           ),

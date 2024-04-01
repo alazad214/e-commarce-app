@@ -4,8 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Product_Grid extends StatelessWidget {
-  const Product_Grid({super.key});
+class Cus_Single_Product extends StatelessWidget {
+  const Cus_Single_Product({super.key});
 
   @override
   Widget build(BuildContext context) {

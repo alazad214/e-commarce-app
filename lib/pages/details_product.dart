@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecommece2/controllers/card_controllers.dart';
 import 'package:ecommece2/widgets/appbarC.dart';
+import 'package:ecommece2/widgets/buttonC.dart';
 import 'package:flutter/material.dart';
 
 class Details_Product extends StatelessWidget {
@@ -12,7 +14,9 @@ class Details_Product extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarC(),
+      appBar: AppBarC(
+        backgroundcolor: Colors.white,
+      ),
       body: SingleChildScrollView(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -23,7 +27,7 @@ class Details_Product extends StatelessWidget {
             clipBehavior: Clip.antiAlias,
             width: double.infinity,
             decoration: const BoxDecoration(
-              color: Colors.grey,
+              color: Colors.white,
             ),
             child: Image.network(
               product?['image'],
@@ -48,9 +52,11 @@ class Details_Product extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Card_Controller().Add_toCard(product!);
+                    },
                     icon: const Icon(
-                      Icons.favorite_border_outlined,
+                      Icons.shopping_cart,
                       color: Colors.green,
                       size: 30,
                     ))
@@ -69,7 +75,7 @@ class Details_Product extends StatelessWidget {
                     style: const TextStyle(
                         color: Colors.black54,
                         fontWeight: FontWeight.w600,
-                        fontSize: 25),
+                        fontSize: 22),
                   ),
                 ),
                 Text(
@@ -79,7 +85,7 @@ class Details_Product extends StatelessWidget {
                       color: Colors.red,
                       fontWeight: FontWeight.w600,
                       decoration: TextDecoration.lineThrough,
-                      fontSize: 25),
+                      fontSize: 22),
                 )
               ],
             ),
@@ -103,29 +109,12 @@ class Details_Product extends StatelessWidget {
                   TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 16),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                    decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: const Text(
-                      "Buy ",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-          )
+          const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+              child: ButtonC(
+                text: "Buy",
+                backgroundColor: Colors.green,
+              ))
         ],
       )),
     );
