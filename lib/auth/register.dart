@@ -23,7 +23,7 @@ class Regester extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.navy_,
-      appBar:  AppBarC(),
+
       body: SafeArea(
         child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),

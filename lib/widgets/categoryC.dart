@@ -11,7 +11,7 @@ class CategoryC extends StatelessWidget {
         stream: FirebaseFirestore.instance.collection("category").snapshots(),
         builder: (_, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const CircularProgressIndicator();
+            return const Center(child: CircularProgressIndicator());
           }
 
           return SizedBox(

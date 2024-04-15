@@ -23,8 +23,9 @@ class _SplashState extends State<Splash> {
     Future.delayed(const Duration(seconds: 4), () {
       if (user == null) {
         Get.offAll(() => Welcome());
-      } else
-        Get.offAll(() => HomePage());
+      } else {
+        Get.offAll(() => const HomePage());
+      }
     });
     super.initState();
   }
@@ -33,12 +34,11 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     final Height = MediaQuery.of(context).size.height;
     return Scaffold(
-
       body: Container(
         color: AppColors.navy_,
-        child:  Center(
-          child: Lottie.asset("assets/animation/anim.json",height: Height / 8 )
-        ),
+        child: Center(
+            child:
+                Lottie.asset("assets/animation/anim.json", height: Height / 8)),
       ),
     );
   }

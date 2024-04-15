@@ -21,6 +21,8 @@ class Auth_Controller extends GetxController {
 
   final auth = FirebaseAuth.instance;
 
+  final users = FirebaseAuth.instance.currentUser;
+
   SignUp() async {
     if (password.value != confirmpassword.value) {
       Get.snackbar("Invalid password", "Password doesn't matched");
@@ -46,22 +48,6 @@ class Auth_Controller extends GetxController {
     }
   }
 
-  profileSetUp() async {
-    final token = await FirebaseMessaging.instance.getToken();
-
-    await FirebaseFirestore.instance
-        .collection('users')
-        .doc('document_id')
-        .set({
-      'email': email.value,
-      'full_name': fullName.value,
-      'address': address.value,
-      'phone_number': phoneNumber.value,
-      'token': token,
-    });
-    Get.offAll(() => const HomePage());
-  }
-
   logIn() async {
     isloading.value = true;
     update();
@@ -81,5 +67,22 @@ class Auth_Controller extends GetxController {
       update();
       Get.snackbar("Error", error.message ?? "Something Wrong");
     }
+  }
+
+  profileSetUp() async {
+    final token = await FirebaseMessaging.instance.getToken();
+
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(users!.email)
+        .collection("user")
+        .add({
+      'email': users!.email,
+      'full_name': fullName.value,
+      'address': address.value,
+      'phone_number': phoneNumber.value,
+      'token': token,
+    });
+    Get.offAll(() => const HomePage());
   }
 }

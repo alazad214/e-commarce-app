@@ -48,23 +48,23 @@ class Details_Product extends StatelessWidget {
                     style: const TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w600,
-                        fontSize: 20),
+                        fontSize: 16),
                   ),
                 ),
-                IconButton(
-                    onPressed: () {
-                      Card_Controller().Add_toCard(product!);
-                    },
-                    icon: const Icon(
-                      Icons.shopping_cart,
-                      color: Colors.green,
-                      size: 30,
-                    ))
+                CircleAvatar(
+                  child: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.favorite,
+                        color: Colors.red,
+                        size: 25,
+                      )),
+                )
               ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -75,7 +75,7 @@ class Details_Product extends StatelessWidget {
                     style: const TextStyle(
                         color: Colors.black54,
                         fontWeight: FontWeight.w600,
-                        fontSize: 22),
+                        fontSize: 18),
                   ),
                 ),
                 Text(
@@ -85,7 +85,7 @@ class Details_Product extends StatelessWidget {
                       color: Colors.red,
                       fontWeight: FontWeight.w600,
                       decoration: TextDecoration.lineThrough,
-                      fontSize: 22),
+                      fontSize: 18),
                 )
               ],
             ),
@@ -109,10 +109,13 @@ class Details_Product extends StatelessWidget {
                   TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 16),
             ),
           ),
-          const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+          Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
               child: ButtonC(
-                text: "Buy",
+                ontap: () {
+                  Card_Controller().Add_toCard(product!);
+                },
+                text: "Add To Card",
                 backgroundColor: Colors.green,
               ))
         ],
