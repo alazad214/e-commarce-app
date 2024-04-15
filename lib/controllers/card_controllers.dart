@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 class Card_Controller extends GetxController {
   final cards = FirebaseAuth.instance.currentUser!;
-
+/*
   Add_toCard(QueryDocumentSnapshot product) {
     FirebaseFirestore.instance
         .collection("cards")
@@ -20,5 +20,5 @@ class Card_Controller extends GetxController {
       "quantity": 1
     }).then((value) => Get.snackbar(
             "Successfully", "Product successfully added to card "));
-  }
+  }*/
 }

@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommece2/controllers/card_controllers.dart';
+import 'package:ecommece2/controllers/products_contollers.dart';
+
+import 'package:ecommece2/pages/card_screen.dart';
 import 'package:ecommece2/widgets/appbarC.dart';
 import 'package:ecommece2/widgets/buttonC.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Details_Product extends StatelessWidget {
   final QueryDocumentSnapshot<Map<String, dynamic>>? product;
@@ -13,6 +16,7 @@ class Details_Product extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(Product_Contoller());
     return Scaffold(
       appBar: AppBarC(
         backgroundcolor: Colors.white,
@@ -110,13 +114,86 @@ class Details_Product extends StatelessWidget {
             ),
           ),
           Padding(
+            padding: EdgeInsets.all(15),
+            child: Column(
+              children: [
+                StreamBuilder(
+                    stream: FirebaseFirestore.instance
+                        .collection("products")
+                        .doc(product!.id)
+                        .snapshots(),
+                    builder: (_, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return CircularProgressIndicator();
+                      }
+                      return SizedBox(
+                        height: 40,
+                        child: ListView.builder(
+                            itemCount: snapshot.data!.data()!['sizes'].length,
+                            shrinkWrap: true,
+                            primary: false,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (_, index) {
+                              return Obx(() => InkWell(
+                                    onTap: () {
+                                      controller.selectIndex.value = index;
+                                      controller.selectSize.value = snapshot
+                                          .data!
+                                          .data()!['sizes'][index]
+                                          .toString();
+                                    },
+                                    child: Container(
+                                      width: 40,
+                                      margin: const EdgeInsets.only(
+                                        right: 10,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: controller.selectIndex.value ==
+                                                index
+                                            ? Colors.green
+                                            : null,
+                                        border: Border.all(
+                                          color: Colors.black.withOpacity(.1),
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          snapshot.data!
+                                              .data()!['sizes'][index]
+                                              .toString(),
+                                        ),
+                                      ),
+                                    ),
+                                  ));
+                            }),
+                      );
+                    })
+              ],
+            ),
+          ),
+          Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
-              child: ButtonC(
-                ontap: () {
-                  Card_Controller().Add_toCard(product!);
-                },
-                text: "Add To Card",
-                backgroundColor: Colors.green,
+              child: Row(
+                children: [
+                  Expanded(
+                      child: ButtonC(
+                    ontap: () {
+                      // Card_Controller().Add_toCard(product!);
+                    },
+                    text: "Add to card",
+                    backgroundColor: Colors.green,
+                  )),
+                  const SizedBox(width: 10),
+                  Expanded(
+                      child: ButtonC(
+                    ontap: () {
+                      Get.to(Card_Screen());
+                    },
+                    text: "Buy Now",
+                    backgroundColor: Colors.blue,
+                  ))
+                ],
               ))
         ],
       )),

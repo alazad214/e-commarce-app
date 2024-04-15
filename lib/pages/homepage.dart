@@ -1,4 +1,5 @@
 import 'package:ecommece2/pages/card_screen.dart';
+import 'package:ecommece2/pages/favorite_screen.dart';
 import 'package:ecommece2/widgets/categoryC.dart';
 import 'package:ecommece2/widgets/Cus_single_product.dart';
 import 'package:ecommece2/widgets/title_subtitleC.dart';
@@ -25,7 +26,9 @@ class HomePage extends StatelessWidget {
                 color: Colors.green,
               )),
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.to(const favorite_Screen());
+              },
               icon: const Icon(
                 Icons.favorite,
                 color: Colors.red,
