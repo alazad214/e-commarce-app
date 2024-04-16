@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {
-                Get.to(const Card_Screen());
+                Get.to(Cart_Screen());
               },
               icon: const Icon(
                 Icons.shopping_cart,

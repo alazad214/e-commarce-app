@@ -179,7 +179,7 @@ class Details_Product extends StatelessWidget {
                   Expanded(
                       child: ButtonC(
                     ontap: () {
-                      // Card_Controller().Add_toCard(product!);
+                      Product_Contoller().addToCard(product!);
                     },
                     text: "Add to card",
                     backgroundColor: Colors.green,
@@ -188,7 +188,7 @@ class Details_Product extends StatelessWidget {
                   Expanded(
                       child: ButtonC(
                     ontap: () {
-                      Get.to(Card_Screen());
+                      Get.to(Cart_Screen());
                     },
                     text: "Buy Now",
                     backgroundColor: Colors.blue,

@@ -18,6 +18,7 @@ class AppBarC extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      titleSpacing: 0,
       title: title,
       backgroundColor: backgroundcolor ?? Colors.transparent,
       leading: leading ??
