@@ -124,7 +124,7 @@ class Details_Product extends StatelessWidget {
                         .snapshots(),
                     builder: (_, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return CircularProgressIndicator();
+                        return const CircularProgressIndicator();
                       }
                       return SizedBox(
                         height: 40,
